@@ -4,8 +4,8 @@ import java.util.Random;
 public class RandomChangeMaker extends ChangeMaker {
 
   @Override
-  public CashRegister makeChange(double amount) {
-    CashRegister moneySub = new CashRegister();
+  public BagOfMoney makeChange(double amount) {
+    BagOfMoney moneySub = new BagOfMoney();
     Random random = new Random();
     int pos;
     int min = 0;

@@ -2,8 +2,8 @@ package pos_creditcard;
 
 public class GreedyChangeMaker extends ChangeMaker {
 
-  public CashRegister makeChange(double amount) {
-    CashRegister moneySub = new CashRegister();
+  public BagOfMoney makeChange(double amount) {
+    BagOfMoney moneySub = new BagOfMoney();
     int pos = moneySub.quantityOfDenomination() - 1;
     while (amount != 0 && pos >= 0) {
       double money = moneySub.denominations[pos];
