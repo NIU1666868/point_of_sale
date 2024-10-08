@@ -14,7 +14,8 @@ public class RandomChangeMaker extends ChangeMaker {
       pos = random.nextInt((max - min) + 1) + min;
       double money = moneySub.denominations[pos];
       if (money <= amount) {
-        amount -= money;
+        amount = amount - money;
+        amount = Math.round(amount * 100) / 100.0;
         moneySub.addDenomination(money, moneySub.getValue(money) + 1);
       }
     }

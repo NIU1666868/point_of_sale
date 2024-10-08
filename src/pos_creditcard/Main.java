@@ -16,15 +16,21 @@ public class Main {
     //Moritz 4 x 1.9 = 7.6
     //Coca-cola 3 x 1.2 = 3.6
     //Total 11.2
-    pointOfSale.printReceiptOfSale(idSale);
-    double handedAmount = 20.;
-    pointOfSale.payOneSaleCash(idSale, handedAmount);
 
-    int idSale2 = pointOfSale.makeNewSale();
+    pointOfSale.printReceiptOfSale(idSale);
+    double[] money = {10.};
+    int[] quantity = {2};
+    BagOfMoney handedAmount = new BagOfMoney(money, quantity);
+    String option1 = "greedy";
+    String option2 = "random";
+    pointOfSale.payOneSaleCash(idSale, handedAmount, option1);
+    //pointOfSale.printPayment(idSale);
+
+    /*int idSale2 = pointOfSale.makeNewSale();
     pointOfSale.addLineItemToSale(idSale2, "Nestea", 1);
     pointOfSale.printReceiptOfSale(idSale2);
     pointOfSale.payOneSaleCreditCard(idSale2, "4502360043567891");
-    pointOfSale.printPayment(idSale2);
+    pointOfSale.printPayment(idSale2);*/
   }
   // the old main
   /*

@@ -27,12 +27,12 @@ public class BagOfMoney {
   }
 
   public boolean contains(BagOfMoney money) {
-    for (double denomination : money.denominations) {
-      if (money.getValue(denomination) <= this.getValue(denomination)) {
-        return true;
+    for (double denomination : denominations) {
+      if (this.getValue(denomination) < money.getValue(denomination)) {
+        return false;
       }
     }
-    return false;
+    return true;
   }
 
   public void add(BagOfMoney money){
@@ -54,14 +54,16 @@ public class BagOfMoney {
     }
   }
 
-  public void printBagOfMoney() {
+  public void print() {
     for (double denomination : moneyInBag.keySet()) {
-      int denominationQuantity = moneyInBag.getOrDefault(denomination, -1);
-      System.out.println(denomination + " " + denominationQuantity);
+      if (moneyInBag.get(denomination) >= 1) {
+        int denominationQuantity = moneyInBag.getOrDefault(denomination, -1);
+        System.out.println(denominationQuantity + " of " + denomination);
+      }
     }
   }
 
-  public double isWorth(){
+  public double money(){
     double total = 0;
     for(double denomination: moneyInBag.keySet()) {
       int quantity = moneyInBag.get(denomination);

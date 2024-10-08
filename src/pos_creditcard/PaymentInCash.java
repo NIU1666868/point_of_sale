@@ -1,22 +1,33 @@
 package pos_creditcard;
 
 public class PaymentInCash extends Payment {
-  double amountHanded;
+  BagOfMoney amountHanded;
+  BagOfMoney change;
 
-  public PaymentInCash(double amountHanded, double amountToPay) {
+  public PaymentInCash(BagOfMoney amountHanded, double amountToPay) {
     super(amountToPay);
-    assert amountHanded >= amountToPay;
+    assert amountHanded.money() >= amountToPay;
     this.amountHanded = amountHanded;
   }
 
-  private double change() {
-    double change = amountHanded - amountToPay;
-    assert change >= 0;
+  public BagOfMoney change(String option) {
+    ChangeMaker changeMaker;
+    if (option.equals("greedy")) {changeMaker = new GreedyChangeMaker();}
+    else {changeMaker = new RandomChangeMaker();}
+    double amount = amountHanded.money() - amountToPay;
+    System.out.printf("money handed \n" );
+    amountHanded.print();
+    System.out.printf("\nadded payment to cash box\n");
+    amountHanded.print();
+    System.out.printf("\ntotal to pay "+ amountToPay + ", change to give " + amount);
+    change = changeMaker.makeChange(amount);
     return change;
   }
 
   @Override
   public void print() {
-    System.out.printf("\nAmount handed : %.2f\nChange : %.2f\n", amountHanded, change());
+
+    amountHanded.print();
+    change.print();
   }
 }
