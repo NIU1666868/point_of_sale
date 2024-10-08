@@ -2,13 +2,13 @@ package pos_creditcard;
 
 public class GreedyChangeMaker extends ChangeMaker {
 
-  public CashRegister makeChange(double moneyChange) {
+  public CashRegister makeChange(double amount) {
     CashRegister moneySub = new CashRegister();
     int pos = moneySub.quantityOfDenomination() - 1;
-    while (moneyChange != 0 && pos >= 0) {
+    while (amount != 0 && pos >= 0) {
       double money = moneySub.denominations[pos];
-        while (money <= moneyChange) {
-          moneyChange = moneyChange - money;
+        while (money <= amount) {
+          amount -= money;
           moneySub.addDenomination(money, moneySub.getValue(money) + 1);
         }
       pos--;

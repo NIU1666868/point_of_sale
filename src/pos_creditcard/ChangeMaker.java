@@ -2,5 +2,5 @@ package pos_creditcard;
 
 abstract class ChangeMaker {
 
-  public abstract CashRegister makeChange(double amount);
+  public abstract BagOfMoney makeChange(double amount);
 }
